@@ -2,9 +2,6 @@ const express = require('express');
 const app = express();
 const hbs = require('hbs');
 
-//importo las rutas
-app.use(require('./routes'));
-
 // requiero los helpers del origen del directorio
 require('./hbs/helpers');
 
@@ -15,6 +12,9 @@ const port = process.env.PORT || 3000;
 app.use(express.static(__dirname + '/public'));
 // pongo en esta carpeta de forma que sean de dominio publicp
 //todo lo que vaya aqui va a poder ser buscado poniendo el nombre y la extencion del archivo
+
+//importo las rutas
+app.use(require('./routes'));
 
 // Express HBS engine
 hbs.registerPartials(__dirname + '/views/parciales');
